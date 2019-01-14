@@ -8,13 +8,19 @@ import android.view.ViewGroup;
 import com.example.adawson.courseadvisor.model.Course;
 import com.example.adawson.courseadvisor.viewHolders.CourseHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseHolder> {
     private List<Course> courses;
 
-    public CourseAdapter(List<Course> courses) {
+    public CourseAdapter() {
+        this.courses = new ArrayList<Course>();
+    }
+
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
+        notifyDataSetChanged();
     }
 
     @Override
