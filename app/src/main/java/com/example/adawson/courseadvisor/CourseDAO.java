@@ -9,6 +9,7 @@ import com.example.adawson.courseadvisor.model.Course;
 
 import java.util.List;
 
+// the data access class
 @Dao
 public interface CourseDAO {
     @Insert
