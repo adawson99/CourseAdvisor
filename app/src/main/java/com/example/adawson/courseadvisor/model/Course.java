@@ -23,12 +23,12 @@ public class Course {
     private int credits;
 
    //  applicable latin honors
-   private HashSet<String> latinHonors;
+  // private HashSet<String> latinHonors;
 
-    public Course(String id, String name, String majorId, int credits) {
+    public Course(String id, String name, String major, int credits) {
         this.id = id;
         this.name = name;
-        this.major = majorId;
+        this.major = major;
         this.credits = credits;
     }
 
@@ -42,11 +42,11 @@ public class Course {
 
     public String getMajor() { return major; }
 
-    public HashSet<String> getLatinHonors() { return latinHonors; }
+    //public HashSet<String> getLatinHonors() { return latinHonors; }
 
-    public void setLatinHonors(HashSet<String> latinHonors) {
+   /* public void setLatinHonors(HashSet<String> latinHonors) {
         this.latinHonors = latinHonors;
     }
-
+*/
     public int getCredits() { return credits; }
 }
