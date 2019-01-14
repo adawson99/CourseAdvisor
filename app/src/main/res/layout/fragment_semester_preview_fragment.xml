@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="#008577"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".semester_preview_fragment">
+
+    <TextView
+        android:id="@+id/semesterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:text="@string/semester"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/course1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/major"
+        android:text="@string/course_1" />
+
+    <TextView
+        android:id="@+id/course2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/outsideMajor"
+        android:text="@string/course_2" />
+
+    <TextView
+        android:id="@+id/course3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/minor"
+        android:text="@string/course_3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/course4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/major"
+            android:baselineAligned="false"
+            android:text="@string/course_1" />
+
+        <TextView
+            android:id="@+id/creditHours"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:background="@android:color/white"
+            android:paddingLeft="5dp"
+            android:text="@string/credits"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</LinearLayout>
