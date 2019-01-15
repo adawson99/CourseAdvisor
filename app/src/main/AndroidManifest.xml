@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".CourseSelection" />
         <activity android:name=".FeedbackActivity" />
+        <activity android:name=".SemesterEdit" />
         <activity android:name=".IntroActivity"></activity>
     </application>
 

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class CourseRepository {
     private CourseDAO courseDAO;
+
     private LiveData<List<Course>> courses;
 
     public CourseRepository(Application application) {
