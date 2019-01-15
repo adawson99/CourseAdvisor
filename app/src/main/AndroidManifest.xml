@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseSelection" />
-        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".IntroActivity"></activity>
     </application>
 
 </manifest>

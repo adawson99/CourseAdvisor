@@ -36,7 +36,6 @@ public class CourseSelection extends AppCompatActivity {
         // insert courses once
         addAllCoursesToDatabase();
 
-
         // also do majors here?
 
         list.setAdapter(adapter);
