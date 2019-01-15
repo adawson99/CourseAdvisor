@@ -15,7 +15,7 @@ import java.util.List;
 public interface MajorDAO {
 
     @Insert
-    void insert(Course course);
+    void insert(Major major);
 
     @Query("SELECT * FROM major_table ORDER BY id ASC")
     LiveData<List<Major>> getAllMajors();

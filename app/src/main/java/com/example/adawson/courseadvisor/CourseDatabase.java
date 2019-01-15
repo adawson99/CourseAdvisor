@@ -15,6 +15,7 @@ import com.example.adawson.courseadvisor.model.majorRequirements;
 public abstract class CourseDatabase extends RoomDatabase {
 
     public abstract CourseDAO courseDAO();
+    public abstract MajorDAO majorDAO();
 
     // instance of app database class
     private static volatile CourseDatabase INSTANCE;
