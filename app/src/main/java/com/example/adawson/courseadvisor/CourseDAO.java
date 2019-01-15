@@ -15,6 +15,9 @@ public interface CourseDAO {
     @Insert
     void insert(Course course);
 
+    @Insert
+    void insertAll(List<Course> courses);
+
     @Query("SELECT * FROM course_table ORDER BY id ASC")
     LiveData<List<Course>> getAllCourses();
 
@@ -23,5 +26,9 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM course_table WHERE name LIKE :name")
     LiveData<List<Course>> getCourseByName(String name);
+
+    // counts the items in the table
+    @Query("SELECT COUNT(*) from course_table")
+    int countItems();
 
 }

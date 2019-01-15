@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,13 +23,14 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         FragmentManager fm = getSupportFragmentManager();
         // initialize the fragment semester titles, this never needs to change or update
         initializeFragmentTitles(fm);
     }
 
-    // handler for checkProgress button that triggers information/feedback activity
+    /* handler for checkProgress button that
+     * triggers information/feedback activity
+      */
     public void checkProgress(View view) {
         // will connect to the feedback activity
      // Intent intent = new Intent(this, feedback.class);
