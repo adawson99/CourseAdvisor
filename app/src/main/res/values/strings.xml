@@ -26,5 +26,16 @@
     <string name="s7">Semester 7</string>
     <string name="s8">Semester 8</string>
 
+    // Semester UI strings
+    <string name="class_1">Class 1</string>
+    <string name="class_2">Class 2</string>
+    <string name="class_3">Class 3</string>
+    <string name="class_4">Class 4</string>
+    <string name="class_5">Class 5</string>
+    <string name="class_6">Class 6</string>
+    <string name="addclass">Add class</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
 
 </resources>
