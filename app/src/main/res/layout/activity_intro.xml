@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".IntroActivity">
 
-    <TextView
-        android:id="@+id/majorPromptText"
+    <Button
+        android:id="@+id/selectMajor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:onClick="onSelectMajor"
         android:text="Select Major"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.501"
@@ -39,11 +40,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Computer Science"
+        android:inputType="text"
+        android:text="None Selected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/majorPromptText" />
+        app:layout_constraintTop_toBottomOf="@+id/selectMajor" />
 
     <TextView
         android:id="@+id/directions"
@@ -66,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:onClick="onStartButton"
         android:text="Start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
