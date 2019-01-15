@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Major {
 
     @PrimaryKey(autoGenerate = true)
-    private int key;
+    private int id;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -22,12 +22,12 @@ public class Major {
     }
 
     // getters and setters for the auto generated id for each major object
-    public void setKey(int key) {
-        this.key = key;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getKey() {
-        return key;
+    public int getId() {
+        return id;
     }
 
     public String getName() { return name; }
