@@ -21,5 +21,5 @@ public interface MajorDAO {
     LiveData<List<Major>> getAllMajors();
 
     @Query("SELECT creditHours FROM major_table WHERE name LIKE :majorName")
-    LiveData<List<Major>> getCredits(String majorName);
+    LiveData<List<Major>> getCreditHours(String majorName);
 }
