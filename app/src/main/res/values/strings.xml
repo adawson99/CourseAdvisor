@@ -16,5 +16,15 @@
     <string name="creditHours">4 credits </string>
     <string name="majorName">Computer Science</string>
 
+    // semester titles for home page
+    <string name="s1">Semester 1</string>
+    <string name="s2">Semester 2</string>
+    <string name="s3">Semester 3</string>
+    <string name="s4">Semester 4</string>
+    <string name="s5">Semester 5</string>
+    <string name="s6">Semester 6</string>
+    <string name="s7">Semester 7</string>
+    <string name="s8">Semester 8</string>
+
 
 </resources>
