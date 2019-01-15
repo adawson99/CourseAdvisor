@@ -15,19 +15,17 @@ public interface SemesterDAO {
     @Insert
     void insert(Semester semester);
 
+    // get all semesters
     @Query("SELECT * FROM semester_table ORDER BY name ASC")
     LiveData<List<Semester>> getAllSemesters();
 
+    //gets the semester name based on the id
+    @Query("SELECT name FROM semester_table WHERE id = :id")
+    String getSemesterName(int id);
 
-    // SOMETHING LIKE THESE WOULD PROBABLY BE IN THE USED IN THE JOINT SEMESTER
-    // AND COURSE TABLE AS OPPOSED TO HERE TO GET ALL COURSES IN THE RELATED SEMESTERS
+    // get creditHours based on semester
+    @Query("SELECT creditHours FROM semester_table WHERE id = :id")
+    int getSemesterCreditHours(int id);
 
-    // gets semesters preceeding and including this semester
-    @Query("SELECT * FROM semester_table WHERE id <= :id")
-    LiveData<List<Semester>> getAllSemestersBefore(String id);
-
-    // gets semesters after this semester
-    @Query("SELECT * FROM semester_table WHERE id > :id")
-    LiveData<List<Semester>> getAllSemestersAfter(String id);
 }
 
