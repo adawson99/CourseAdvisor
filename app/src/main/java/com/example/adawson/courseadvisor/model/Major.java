@@ -29,4 +29,14 @@ public class Major {
     public int getKey() {
         return key;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCreditHours() { return creditHours; }
+
+
 }

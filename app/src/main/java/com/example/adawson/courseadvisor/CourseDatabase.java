@@ -11,8 +11,12 @@ import com.example.adawson.courseadvisor.model.Course;
 public abstract class CourseDatabase extends RoomDatabase {
 
     public abstract CourseDAO courseDAO();
+
+    // instance of app database class
     private static volatile CourseDatabase INSTANCE;
 
+    // singleton that returns the same reference of the database
+    // the database can only be created once
     static CourseDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (CourseDatabase.class) {
@@ -26,4 +30,5 @@ public abstract class CourseDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
 }

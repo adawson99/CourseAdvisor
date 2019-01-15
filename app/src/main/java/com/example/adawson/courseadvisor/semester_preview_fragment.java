@@ -3,6 +3,7 @@ package com.example.adawson.courseadvisor;
 //https://guides.codepath.com/android/Creating-and-Using-Fragments
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,10 +24,6 @@ public class semester_preview_fragment extends Fragment {
 
     private static final String TAG = "logging";
 
-
-    // each fragmnet is a semester, so we probably want to have this?
-    Semester semester;
-
     public semester_preview_fragment() {
         // Required empty public constructor
     }
@@ -36,6 +33,8 @@ public class semester_preview_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_semester_preview_fragment, container, false);
+
+        // hard coded semester 1 as sample for how it should work with the data
         TextView semesterTitle = fragmentView.findViewById(R.id.semesterTitle);
         semesterTitle.setText("Semester 1");
         TextView course1 =  fragmentView.findViewById(R.id.course1);
@@ -82,8 +81,6 @@ public class semester_preview_fragment extends Fragment {
         // a new adapter is created in on create and this is
         // set as the view's adapter here
     }
-
-    // EXPERIMENTATION BELOW
 
 
 }

@@ -65,6 +65,7 @@ public class CourseSelection extends AppCompatActivity {
         courseRepository.insert(course1);
         courseRepository.insert(course2);
         courseRepository.insert(course3);
+
     }
 
 }

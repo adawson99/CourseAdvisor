@@ -22,14 +22,10 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        FragmentManager fm = getSupportFragmentManager();
 
+        FragmentManager fm = getSupportFragmentManager();
         // initialize the fragment semester titles, this never needs to change or update
         initializeFragmentTitles(fm);
-
-
-
-
     }
 
     // handler for checkProgress button that triggers information/feedback activity
@@ -41,7 +37,6 @@ public class Home extends AppCompatActivity {
     }
 
     public void initializeFragmentTitles(FragmentManager fm) {
-
         // all the fragments
         Fragment s1 = fm.findFragmentById(R.id.semester_1_fragment);
         Fragment s2 = fm.findFragmentById(R.id.semester_2_fragment);

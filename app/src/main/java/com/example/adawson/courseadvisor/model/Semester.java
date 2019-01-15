@@ -7,21 +7,30 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "semester_table")
 public class Semester {
 
-        @PrimaryKey(autoGenerate = true)
-        private int key;
+        // int from 1 to 8
+        @PrimaryKey(autoGenerate = false)
+        private int id;
 
         @ColumnInfo(name = "name")
         private String name;
 
-    public Semester(String name) {
+        @ColumnInfo(name = "creditHours")
+        private int creditHours;
+
+    public Semester(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public void setKey(int key) {
-        this.key = key;
+    public int getCreditHours() {
+        return creditHours;
     }
 
-    public int getKey() {
-        return key;
+    public String getName() { return name; }
+
+    public int getId() { return id; }
+
+    public void setCreditHours(int creditHours) {
+        this.creditHours = creditHours;
     }
 }
