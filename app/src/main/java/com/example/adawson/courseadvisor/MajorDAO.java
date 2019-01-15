@@ -20,6 +20,6 @@ public interface MajorDAO {
     @Query("SELECT * FROM major_table ORDER BY id ASC")
     LiveData<List<Major>> getAllMajors();
 
-    @Query("SELECT creditHours FROM major_table WHERE name LIKE :majorName")
-    LiveData<List<Major>> getCreditHours(String majorName);
+    @Query("SELECT creditHours FROM major_table WHERE name LIKE :majorName LIMIT 1")
+    int getCreditHours(String majorName);
 }
