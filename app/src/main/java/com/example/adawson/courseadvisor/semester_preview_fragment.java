@@ -19,8 +19,6 @@ import android.widget.TextView;
 
 public class semester_preview_fragment extends Fragment {
 
-    private static final String TAG = "logging";
-
     public semester_preview_fragment() {
         // Required empty public constructor
     }
