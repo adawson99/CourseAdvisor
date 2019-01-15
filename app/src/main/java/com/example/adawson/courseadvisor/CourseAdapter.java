@@ -10,7 +10,7 @@ import com.example.adawson.courseadvisor.viewHolders.CourseHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Rachel was here!!
 public class CourseAdapter extends RecyclerView.Adapter<CourseHolder> {
     private List<Course> courses;
 
