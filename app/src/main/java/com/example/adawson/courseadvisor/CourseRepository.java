@@ -22,6 +22,16 @@ public class CourseRepository {
         return courses;
     }
 
+    // inserts all the courses in the list into the database
+    public void insert(List<Course> courses) {
+        courseDAO.insertAll(courses);
+    }
+
+    //count all items in course table
+    public int countItems() {
+        return courseDAO.countItems();
+    }
+
     public void insert(Course course) {
         new insertAsyncTask(courseDAO).execute(course);
     }

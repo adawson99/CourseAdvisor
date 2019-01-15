@@ -16,6 +16,9 @@ public class CourseSelection extends AppCompatActivity {
 
     private CourseAdapter adapter = new CourseAdapter();
 
+    // list of courses
+    List<Course> courses = new ArrayList<>();
+
     // the database helper
     private CourseRepository courseRepository;
 
@@ -30,15 +33,11 @@ public class CourseSelection extends AppCompatActivity {
        // List<Course> courses = new ArrayList<>();
 
         courseRepository = new CourseRepository(getApplication());
+        // insert courses once
         addAllCoursesToDatabase();
 
-       /* Course course1 = new Course("CSC 220", "Data Structures", "Computer Science", 5);
-        Course course2 = new Course("CSC 250", "Theory of Computer Science", "Computer Science", 4);
-        Course course3 = new Course("MUS 951", "Glee CLub", "Art", 1);
 
-        courses.add(course1);
-        courses.add(course2);
-        courses.add(course3); */
+        // also do majors here?
 
         list.setAdapter(adapter);
 
@@ -59,6 +58,13 @@ public class CourseSelection extends AppCompatActivity {
         Course course1 = new Course("CSC 220", "Data Structures", "Computer Science", 5);
         Course course2 = new Course("CSC 250", "Theory of Computer Science", "Computer Science", 4);
         Course course3 = new Course("MUS 951", "Glee CLub", "Art", 1);
+
+        /*courses.add(course1);
+        courses.add(course2);
+        courses.add(course3);
+        if (courseRepository.countItems() != 0) {
+            courseRepository.insert(courses);
+        }*/
 
         // inserts courses into the database
         // (happens again every time!)

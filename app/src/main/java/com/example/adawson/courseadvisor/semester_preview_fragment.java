@@ -45,6 +45,7 @@ public class semester_preview_fragment extends Fragment {
                         startActivity(editSem2);
                         break;
                     case R.id.semester_3_fragment:
+                        // pass to it the semester id 3?
                         Intent editSem3 = new Intent(getActivity(), CourseSelection.class);
                         startActivity(editSem3);
                         break;

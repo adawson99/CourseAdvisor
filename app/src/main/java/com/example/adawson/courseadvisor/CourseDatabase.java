@@ -6,8 +6,12 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.example.adawson.courseadvisor.model.Course;
+import com.example.adawson.courseadvisor.model.Semester;
+import com.example.adawson.courseadvisor.model.Major;
+import com.example.adawson.courseadvisor.model.courseSelection;
+import com.example.adawson.courseadvisor.model.majorRequirements;
 
-@Database(entities = {Course.class}, version = 1, exportSchema = false)
+@Database(entities = {Course.class, Semester.class, Major.class, courseSelection.class, majorRequirements.class}, version = 1, exportSchema = false)
 public abstract class CourseDatabase extends RoomDatabase {
 
     public abstract CourseDAO courseDAO();
