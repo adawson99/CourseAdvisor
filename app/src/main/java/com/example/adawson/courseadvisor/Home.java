@@ -34,7 +34,7 @@ public class Home extends AppCompatActivity {
     public void checkProgress(View view) {
         // will connect to the feedback activity
      // Intent intent = new Intent(this, feedback.class);
-        Intent intent = new Intent(this, CourseSelection.class);
+        Intent intent = new Intent(this, FeedbackActivity.class);
       startActivity(intent);
     }
 

@@ -19,8 +19,6 @@ import android.widget.TextView;
 
 public class semester_preview_fragment extends Fragment {
 
-    private static final String TAG = "logging";
-
     public semester_preview_fragment() {
         // Required empty public constructor
     }
@@ -37,36 +35,36 @@ public class semester_preview_fragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.semester_1_fragment:
-                        Intent editSem1 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem1 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem1);
                         break;
                     case R.id.semester_2_fragment:
-                        Intent editSem2 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem2 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem2);
                         break;
                     case R.id.semester_3_fragment:
                         // pass to it the semester id 3?
-                        Intent editSem3 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem3 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem3);
                         break;
                     case R.id.semester_4_fragment:
-                        Intent editSem4 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem4 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem4);
                         break;
                     case R.id.semester_5_fragment:
-                        Intent editSem5 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem5 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem5);
                         break;
                     case R.id.semester_6_fragment:
-                        Intent editSem6 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem6 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem6);
                         break;
                     case R.id.semester_7_fragment:
-                        Intent editSem7 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem7 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem7);
                         break;
                     case R.id.semester_8_fragment:
-                        Intent editSem8 = new Intent(getActivity(), CourseSelection.class);
+                        Intent editSem8 = new Intent(getActivity(), SemesterEdit.class);
                         startActivity(editSem8);
                         break;
                 }

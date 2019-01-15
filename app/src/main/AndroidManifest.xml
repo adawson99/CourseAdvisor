@@ -19,7 +19,12 @@
         <activity android:name=".CourseSelection" />
         <activity android:name=".MajorSelection" />
         <activity android:name=".FeedbackActivity" />
+<<<<<<< HEAD
         <activity android:name=".Home"></activity>
+=======
+        <activity android:name=".SemesterEdit" />
+        <activity android:name=".IntroActivity"></activity>
+>>>>>>> 2a48b595b96eed3399cc9e5b4cb1ab6a21913899
     </application>
 
 </manifest>
