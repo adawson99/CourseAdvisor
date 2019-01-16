@@ -10,6 +10,9 @@
     <string name="course_3">Minor Course</string>
     <string name="credits">0</string>
 
+    //string for passing semester id
+    <string name="SEMESTER_SELECTED">SEMESTER_SELECTED</string>
+
     <string name="home_button">Check Progress</string>
 
     <string name="courseName">Sample Course Name</string>

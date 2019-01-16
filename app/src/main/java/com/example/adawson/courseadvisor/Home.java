@@ -30,8 +30,8 @@ public class Home extends AppCompatActivity {
 
     Activity activity = this;
 
-    /*private static final String SEMESTER_BUNDLE = "SEMESTER_BUNDLE";
-    private static final int REQUEST_CODE = 1001;*/
+    public static final String SEMESTER_SELECTED = "SEMESTER_SELECTED";
+    private static final int REQUEST_CODE = 1001;
 
     private static final String TAG = "logging" ;
 
@@ -171,7 +171,8 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "on click triggered");
                 semesterId = semesterList.get(0).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                Log.i(TAG, "The string to pass " + semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -183,7 +184,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(1).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -195,7 +196,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(2).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -207,7 +208,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(3).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -219,7 +220,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(4).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -231,7 +232,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(5).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -243,7 +244,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(6).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -255,7 +256,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(7).getId();
-                editSem.putExtra("SEMESTER_SELECTED", semesterId);
+                editSem.putExtra(SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
