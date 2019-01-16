@@ -8,15 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.adawson.courseadvisor.model.Semester;
+
 public class SemesterEdit extends AppCompatActivity {
 
     private static final String TAG = "logging";
     String msgKey = "msgKey";
-    /*
-    Button button3 = (Button) findViewById(R.id.button3);
-    Button button4 = (Button)findViewById(R.id.button4);
-    Button button5 = (Button)findViewById(R.id.button5);
-    Button button6 = (Button)findViewById(R.id.button6); */
+    //Button button5 = (Button)findViewById(R.id.button5);
+    //Button button6 = (Button)findViewById(R.id.button6);
+    String hldmsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
