@@ -1,10 +1,15 @@
 package com.example.adawson.courseadvisor.viewHolders;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.example.adawson.courseadvisor.Keys;
 import com.example.adawson.courseadvisor.R;
+import com.example.adawson.courseadvisor.SemesterEdit;
 import com.example.adawson.courseadvisor.model.Course;
 
 public class CourseHolder extends RecyclerView.ViewHolder {
@@ -14,13 +19,21 @@ public class CourseHolder extends RecyclerView.ViewHolder {
     TextView majorName;
     TextView creditHours;
 
+
     public CourseHolder(View courseView) {
         super(courseView);
         //add OnClickListener here...
+        courseView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { ;
+                doClick(v);
+            }
+        });
         courseName = (TextView) courseView.findViewById(R.id.courseName);
         courseID = (TextView) courseView.findViewById(R.id.courseID);
         majorName = (TextView) courseView.findViewById(R.id.majorName);
         creditHours = (TextView) courseView.findViewById(R.id.creditHours);
+
     }
 
     public void bindCourse(Course course) {
@@ -28,6 +41,12 @@ public class CourseHolder extends RecyclerView.ViewHolder {
         courseName.setText(course.getName());
         majorName.setText(course.getMajor());
         creditHours.setText("" + course.getCredits());
-    }
 
+    }
+    private void doClick(View courseView) {
+        Intent intent = new Intent(courseView.getContext(),SemesterEdit.class);
+        String message = courseID.getText().toString();
+        intent.putExtra(Keys.HLDMSG,message);
+        courseView.getContext().startActivity(intent);
+    }
 }

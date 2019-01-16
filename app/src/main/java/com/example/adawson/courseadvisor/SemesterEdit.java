@@ -7,24 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.adawson.courseadvisor.model.Semester;
+
 public class SemesterEdit extends AppCompatActivity {
     String msgKey = "msgKey";
-    Button button3 = (Button)findViewById(R.id.button3);
-    Button button4 = (Button)findViewById(R.id.button4);
-    Button button5 = (Button)findViewById(R.id.button5);
-    Button button6 = (Button)findViewById(R.id.button6);
+    //Button button5 = (Button)findViewById(R.id.button5);
+    //Button button6 = (Button)findViewById(R.id.button6);
+    String hldmsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_semester_edit);
+        //button5.setEnabled(false);
+        //button6.setEnabled(false);
+        Intent intent = getIntent();
+        if (intent.getStringExtra(Keys.HLDMSG) != null) {
+            hldmsg = intent.getStringExtra(Keys.HLDMSG);
+            TextView v = (TextView) findViewById(R.id.currentSemester);
+            String date = v.getText().toString();
+            //TO DO:
+        }
     }
 
     public void openCourseList(View view) {
-        TextView v = (TextView) findViewById(R.id.currentSemester);
-        String message = v.getText().toString();
         Intent intent = new Intent(this,CourseSelection.class);
-        intent.putExtra(msgKey,message);
         startActivity(intent);
+
     }
 }

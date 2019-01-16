@@ -1,6 +1,7 @@
 package com.example.adawson.courseadvisor;
 
 import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseSelection extends AppCompatActivity {
-
+    String message;
     private CourseAdapter adapter = new CourseAdapter();
 
     // list of courses
