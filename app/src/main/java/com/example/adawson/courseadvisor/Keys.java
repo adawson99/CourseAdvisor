@@ -7,4 +7,5 @@ public class Keys {
 
 
     public static final int REQUEST_CODE = 1;
+    //public static final String HLDMSG = "HOLDMESSAGE";
 }

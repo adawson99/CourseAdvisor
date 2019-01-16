@@ -37,5 +37,7 @@ public class SemesterEdit extends AppCompatActivity {
         Intent intent = new Intent(this,CourseSelection.class);
         intent.putExtra(msgKey,message);
         startActivity(intent);
+
     }
+
 }
