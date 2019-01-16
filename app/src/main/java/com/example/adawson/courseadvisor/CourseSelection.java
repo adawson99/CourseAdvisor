@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.adawson.courseadvisor.model.Course;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseSelection extends AppCompatActivity {
+    private static final String TAG = "logging";
     String message;
     private CourseAdapter adapter = new CourseAdapter();
 
@@ -32,6 +34,11 @@ public class CourseSelection extends AppCompatActivity {
         list.setLayoutManager(new LinearLayoutManager(this));
 
        // List<Course> courses = new ArrayList<>();
+
+        Intent intent = getIntent();
+        int currentSemester = intent.getIntExtra(Keys.SEMESTER_SELECTED, 0);
+        Log.i(TAG, currentSemester + " currentSEmester in CourseSelection initialluy");
+
 
         courseRepository = new CourseRepository(getApplication());
         // insert courses once, so must check if there are already rows

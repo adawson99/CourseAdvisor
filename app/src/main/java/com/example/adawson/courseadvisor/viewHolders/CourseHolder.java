@@ -3,6 +3,7 @@ package com.example.adawson.courseadvisor.viewHolders;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -19,6 +20,10 @@ public class CourseHolder extends RecyclerView.ViewHolder {
     TextView majorName;
     TextView creditHours;
 
+    int currentSemester;
+
+    private static final String TAG = "logging";
+
 
     public CourseHolder(View courseView) {
         super(courseView);
@@ -34,6 +39,10 @@ public class CourseHolder extends RecyclerView.ViewHolder {
         majorName = (TextView) courseView.findViewById(R.id.majorName);
         creditHours = (TextView) courseView.findViewById(R.id.creditHours);
 
+        Intent intent = new Intent();
+        currentSemester = intent.getIntExtra(Keys.SEMESTER_SELECTED, 0);
+        Log.i(TAG, currentSemester + " current semester in CourseHolder");
+
     }
 
     public void bindCourse(Course course) {
@@ -44,9 +53,19 @@ public class CourseHolder extends RecyclerView.ViewHolder {
 
     }
     private void doClick(View courseView) {
-        Intent intent = new Intent(courseView.getContext(),SemesterEdit.class);
-        String message = courseID.getText().toString();
-        intent.putExtra(Keys.HLDMSG,message);
-        courseView.getContext().startActivity(intent);
+
+        Intent intent = new Intent();
+
+       // Intent intent = new Intent(courseView.getContext(),SemesterEdit.class);
+       String message = courseID.getText().toString();
+        //intent.putExtra(Keys.HLDMSG,message);
+       // intent.putExtra(Keys.HLDMSG, message);
+        ((Activity)courseView.getContext()).setResult(Activity.RESULT_OK, intent.putExtra(Keys.HLDMSG, message));
+        ((Activity)courseView.getContext()).finish();
+
+       // Log.i(TAG, "sending " + currentSemester + " back to SemesterEdit");
+       // courseView.getContext().startActivity(intent);
+       // courseView.finish();
+
     }
 }
