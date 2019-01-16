@@ -5,6 +5,7 @@
     <string name="semester">Current Semester</string>
 
     <string name="course_1">Major Course</string>
+    <string name="course">Placeholder Course</string>
     <string name="course_2">Outside Major</string>
     <string name="course_3">Minor Course</string>
     <string name="credits">0</string>

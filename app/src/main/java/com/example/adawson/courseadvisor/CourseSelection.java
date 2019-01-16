@@ -33,14 +33,12 @@ public class CourseSelection extends AppCompatActivity {
        // List<Course> courses = new ArrayList<>();
 
         courseRepository = new CourseRepository(getApplication());
-        // insert courses once
+        // insert courses once, so must check if there are already rows
         addAllCoursesToDatabase();
-
-        // also do majors here?
 
         list.setAdapter(adapter);
 
-        // live data observer
+        // live data observer for getting courses
         courseRepository.getCourses().observe(
                 this,
                 new Observer<List<Course>>() {

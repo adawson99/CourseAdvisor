@@ -21,11 +21,7 @@ public interface SemesterDAO {
 
     //gets the semester name based on the id
     @Query("SELECT name FROM semester_table WHERE id = :id")
-    String getSemesterName(int id);
-
-    // get creditHours based on semester
-    @Query("SELECT creditHours FROM semester_table WHERE id = :id")
-    int getSemesterCreditHours(int id);
+    LiveData<String> getSemesterName(int id);
 
 }
 

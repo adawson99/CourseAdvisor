@@ -14,23 +14,15 @@ public class Semester {
         @ColumnInfo(name = "name")
         private String name;
 
-        @ColumnInfo(name = "creditHours")
-        private int creditHours;
-
     public Semester(int id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public int getCreditHours() {
-        return creditHours;
     }
 
     public String getName() { return name; }
 
     public int getId() { return id; }
 
-    public void setCreditHours(int creditHours) {
-        this.creditHours = creditHours;
-    }
+    public void setId(int id) { this.id = id; }
+
 }

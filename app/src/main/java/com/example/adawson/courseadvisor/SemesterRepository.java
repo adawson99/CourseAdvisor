@@ -2,7 +2,10 @@ package com.example.adawson.courseadvisor;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.adawson.courseadvisor.CourseDatabase;
 import com.example.adawson.courseadvisor.SemesterDAO;
@@ -11,6 +14,8 @@ import com.example.adawson.courseadvisor.model.Semester;
 import java.util.List;
 
 public class SemesterRepository {
+
+    private static final String TAG = "logging";
 
     private SemesterDAO semesterDAO;
 
@@ -21,6 +26,15 @@ public class SemesterRepository {
         CourseDatabase db = CourseDatabase.getDatabase(application);
         semesterDAO = db.semesterDAO();
         semesters = semesterDAO.getAllSemesters();
+    }
+
+    // get semester name
+    LiveData<String> getSemesterName(int id) {
+        return semesterDAO.getSemesterName(id);
+    }
+
+    LiveData<List<Semester>> getAllSemesters() {
+        return semesters;
     }
 
     public void insert(Semester semester) {
@@ -40,6 +54,8 @@ public class SemesterRepository {
             return null;
         }
     }
+
+
 
 }
 

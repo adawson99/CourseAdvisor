@@ -23,13 +23,15 @@ public class CourseRepository {
         return courses;
     }
 
-    // inserts all the courses in the list into the database
+   // THIS ISN:T ASYNCRHONOUS?
+   // inserts all the courses in the list into the database
     public void insert(List<Course> courses) {
         courseDAO.insertAll(courses);
     }
 
+    // ALSO NOT ASYNCHRONOUS?
     //count all items in course table
-    public int countItems() {
+    int countItems() {
         return courseDAO.countItems();
     }
 

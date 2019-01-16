@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class CourseSelection {
 
     @PrimaryKey(autoGenerate = true)
-    private int key;
+    private int _id;
 
     @ColumnInfo(name="semesterId")
     private int semester;
@@ -22,9 +22,9 @@ public class CourseSelection {
         this.course = course;
     }
 
-    public int getKey() { return key; }
+    public int getId() { return _id; }
 
-    public void setKey(int key) { this.key = key; }
+    public void setId(int _id) { this._id = _id; }
 
     public int getSemester() { return semester; }
 
