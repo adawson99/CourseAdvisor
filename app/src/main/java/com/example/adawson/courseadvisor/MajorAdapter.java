@@ -10,7 +10,7 @@ import com.example.adawson.courseadvisor.viewHolders.MajorHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-//Rachel was here!!
+
 public class MajorAdapter extends RecyclerView.Adapter<MajorHolder> {
     private List<Major> majors;
 
