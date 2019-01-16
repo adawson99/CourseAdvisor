@@ -22,11 +22,27 @@ public class CourseSelectionRepository {
             courseSelections = courseSelectionDAO.getTotalCourses();
         }
 
-    public void insert(CourseSelection courseSelection) {
-        new insertAsyncTask(courseSelectionDAO).execute(courseSelection);
-    }
+        // get courses for this semester
+        public LiveData<List<Integer>> getThisSemesterCourses(int id) {
+            return courseSelectionDAO.getThisSemesterCourses(id);
+        }
 
-    private static class insertAsyncTask extends AsyncTask<CourseSelection, Void, Void> {
+        //get all courses before and during this semester by id
+        public LiveData<List<Integer>> getAllCoursesBefore(int id) {
+            return courseSelectionDAO.getAllCoursesBefore(id);
+        }
+
+        // get all course ids after this semester
+        public LiveData<List<Integer>> getAllCoursesAfter(int id) {
+            return courseSelectionDAO.getAllCoursesAfter(id);
+        }
+
+        // asynchronous insert task
+        public void insert(CourseSelection courseSelection) {
+        new insertAsyncTask(courseSelectionDAO).execute(courseSelection);
+        }
+
+        private static class insertAsyncTask extends AsyncTask<CourseSelection, Void, Void> {
         private CourseSelectionDAO mAsyncTaskDao;
 
         insertAsyncTask(CourseSelectionDAO dao) {

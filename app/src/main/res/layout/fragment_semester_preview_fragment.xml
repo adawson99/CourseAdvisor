@@ -22,7 +22,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-
     <TextView
         android:id="@+id/course1"
         android:layout_width="match_parent"
@@ -63,11 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_gravity="end"
             android:background="@android:color/white"
             android:paddingLeft="5dp"
             android:text="@string/credits"
             android:textStyle="bold" />
     </RelativeLayout>
+
 
 </LinearLayout>

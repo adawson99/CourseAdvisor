@@ -1,11 +1,13 @@
 package com.example.adawson.courseadvisor;
 
 import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.adawson.courseadvisor.model.Course;
 
@@ -13,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseSelection extends AppCompatActivity {
-
+    private static final String TAG = "logging";
+    String message;
     private CourseAdapter adapter = new CourseAdapter();
 
     // list of courses
@@ -32,15 +35,18 @@ public class CourseSelection extends AppCompatActivity {
 
        // List<Course> courses = new ArrayList<>();
 
-        courseRepository = new CourseRepository(getApplication());
-        // insert courses once
-        addAllCoursesToDatabase();
+        Intent intent = getIntent();
+        int currentSemester = intent.getIntExtra(Keys.SEMESTER_SELECTED, 0);
+        Log.i(TAG, currentSemester + " currentSEmester in CourseSelection initialluy");
 
-        // also do majors here?
+
+        courseRepository = new CourseRepository(getApplication());
+        // insert courses once, so must check if there are already rows
+        addAllCoursesToDatabase();
 
         list.setAdapter(adapter);
 
-        // live data observer
+        // live data observer for getting courses
         courseRepository.getCourses().observe(
                 this,
                 new Observer<List<Course>>() {
