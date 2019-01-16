@@ -10,14 +10,16 @@ import com.example.adawson.courseadvisor.model.Course;
 import com.example.adawson.courseadvisor.model.Semester;
 import com.example.adawson.courseadvisor.model.Major;
 import com.example.adawson.courseadvisor.model.CourseSelection;
+import com.example.adawson.courseadvisor.model.User;
 import com.example.adawson.courseadvisor.model.majorRequirements;
 
-@Database(entities = {Course.class, Semester.class, Major.class, CourseSelection.class, majorRequirements.class}, version = 1, exportSchema = false)
+@Database(entities = {Course.class, Semester.class, Major.class, User.class, CourseSelection.class, majorRequirements.class}, version = 1, exportSchema = false)
 public abstract class CourseDatabase extends RoomDatabase {
 
     public abstract CourseDAO courseDAO();
     public abstract MajorDAO majorDAO();
     public abstract SemesterDAO semesterDAO();
+    public abstract UserDAO userDAO();
     public abstract CourseSelectionDAO courseSelectionDAO();
 
     // instance of app database class
