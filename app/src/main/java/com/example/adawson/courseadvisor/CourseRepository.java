@@ -35,6 +35,36 @@ public class CourseRepository {
         return courseDAO.getCourseNameById(id);
     }
 
+/*
+    // get credits based on course Id
+    public int getCreditsByCourseId(String id) {
+        //return courseDAO.getCreditsByCourseId(id);
+        return new getCreditsAsyncTask(courseDAO).execute(id);
+    }
+
+    private static class getCreditsAsyncTask extends AsyncTask<String, Void, Void> {
+        private CourseDAO mAsyncTaskDao;
+
+        getCreditsAsyncTask(CourseDAO dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        protected int doInBackground(String... params) {
+           int credits = mAsyncTaskDao.getCreditsByCourseId(params[0]);
+           return credits;
+        }
+
+        protected void onPostExecute(Integer result) {
+            return result;
+        }
+    }
+*/
+
+    //get key by id
+    int getCourseKeyById(String id) {
+        return courseDAO.getCourseKeyById(id);
+    }
+
     //get course major by id
     String getMajorById(String id) {
         //return courseDAO.getCourseMajorById(id);

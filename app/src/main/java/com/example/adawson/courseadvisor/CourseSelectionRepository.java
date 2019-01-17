@@ -22,6 +22,12 @@ public class CourseSelectionRepository {
             courseSelections = courseSelectionDAO.getTotalCourses();
         }
 
+
+        // asynchronous replaceCourse task
+        public void replaceCourse(String courseId, int key) {
+            new replaceAsyncTask(courseSelectionDAO,courseId,key).execute();
+        }
+
         // get courses for this semester
         public LiveData<List<String>> getThisSemesterCourses(int id) {
             return courseSelectionDAO.getThisSemesterCourses(id);
@@ -48,18 +54,37 @@ public class CourseSelectionRepository {
         }
 
         private static class insertAsyncTask extends AsyncTask<CourseSelectionObject, Void, Void> {
-        private CourseSelectionDAO mAsyncTaskDao;
+            private CourseSelectionDAO mAsyncTaskDao;
 
-        insertAsyncTask(CourseSelectionDAO dao) {
-            mAsyncTaskDao = dao;
+            insertAsyncTask(CourseSelectionDAO dao) {
+                mAsyncTaskDao = dao;
+            }
+
+            @Override
+            protected Void doInBackground(final CourseSelectionObject... params) {
+                mAsyncTaskDao.insert(params[0]);
+                return null;
+            }
         }
 
-        @Override
-        protected Void doInBackground(final CourseSelectionObject... params) {
-            mAsyncTaskDao.insert(params[0]);
-            return null;
+        private static class replaceAsyncTask extends AsyncTask<Void, Void, Void> {
+            private CourseSelectionDAO mAsyncTaskDao;
+            private String stringVal;
+            private int intVal;
+
+            replaceAsyncTask(CourseSelectionDAO dao, String s, int i) {
+                stringVal = s;
+                intVal = i;
+                mAsyncTaskDao = dao;
+            }
+
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                mAsyncTaskDao.replaceCourse(stringVal,intVal);
+                return null;
+            }
         }
-    }
 
     }
 

@@ -2,6 +2,7 @@ package com.example.adawson.courseadvisor;
 
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ public class SemesterEdit extends AppCompatActivity {
     private int currentSemester;
 
     // list of course IDs from the semester based on courseSelection
-    private List<String> courseIds = new ArrayList<>();
+    private String[] courseIds = new String[8];
 
     // the semester repository
     private CourseRepository courseRepository;
@@ -88,7 +89,7 @@ public class SemesterEdit extends AppCompatActivity {
             Log.i(TAG, "the current semesters is " + currentSemester + " and the semester of this course" +
                     "is " + cs.getSemester());
             if (cs.getSemester() == currentSemester) {
-                courseIds.add(cs.getCourse());
+                courseIds[i] = cs.getCourse();
                 Log.i(TAG, "this is i: " + i);
                 nameButtons(cs.getCourse(), i);
                 Log.i(TAG, "getting the course: " + cs.getCourse());
@@ -101,7 +102,6 @@ public class SemesterEdit extends AppCompatActivity {
 
     // writes on the buttons depending on courseselectionobejcts in database
     public void nameButtons(String courseName, int courseNumber) {
-        String courseId = "test";
 
         // this makes the entire app get upset about non asychronous database access
 
@@ -141,9 +141,9 @@ public class SemesterEdit extends AppCompatActivity {
 
     // prints out the names of the courses whose ids are in courseIds
     public void printCourseNames() {
-        int size = courseIds.size();
+        int size = courseIds.length;
         for (int i = 0; i<size; i++) {
-            Log.i(TAG, courseIds.get(i) + "I am printing a course name, but need to get it from database!");
+            Log.i(TAG, courseIds[i] + "I am printing a course name, but need to get it from database!");
         }
 
     }
@@ -157,6 +157,10 @@ public class SemesterEdit extends AppCompatActivity {
         // attempting to record which button the data should be bound to visually
         buttonId = v.getId();
 
+        //Button button = (Button) findViewById(buttonId);
+        //String currentCourse = button.getText().toString();
+        //intent.putExtra(Keys.CURRENT_COURSE,currentCourse);
+
         intent.putExtra(msgKey,message);
         //startActivity(intent);
         startActivityForResult(intent, Keys.REQUEST_CODE);
@@ -164,14 +168,53 @@ public class SemesterEdit extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d("TestCrash","in onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Keys.REQUEST_CODE && resultCode == RESULT_OK) {
-            String course = data.getStringExtra(Keys.HLDMSG);
-            Log.i(TAG, course + "this is the course!");
+            Log.d("TestCrash","RESULT_OK");
+            String courseId = data.getStringExtra(Keys.HLDMSG);
+            String oldCourseId = data.getStringExtra(Keys.CURRENT_COURSE);
+            Log.i("TestCrash","oldCourseId: "+oldCourseId);
 
-            Button button = (Button) findViewById(R.id.button);
-            button.setText(course);
+            if (courseId==null) {
+                Log.d("TestCrash","courseId is null");
+            }
+            Log.i("TestCrash", courseId + " is the course!");
+            //Button button = (Button) findViewById(R.id.button);
 
+            //replace the current course with the selected course
+            //String oldCourseId = button.getText().toString();
+            //Log.i("TestCrash","oldCourseId: "+oldCourseId);
+
+            CourseDatabase db = CourseDatabase.getDatabase(getApplication());
+            Log.d("TestCrash","Adding course to db");
+            CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
+            courseSelectionRepository.insert(courseSelection);
+            /*
+            Cursor mcursor = db.query("SELECT * from course_selection_table",null);
+
+            if (mcursor.moveToFirst()) {
+                mcursor = db.query("SELECT * from course_selection_table WHERE semesterId = currentSemester AND courseId = oldCourseId",null);
+                if (mcursor.moveToFirst()) {
+                    //replace course
+                    Log.d("TestCrash","Replacing old course with new in the db");
+                    int courseSelectionKey = courseRepository.getCourseKeyById(oldCourseId);
+                    courseSelectionRepository.replaceCourse(courseId,courseSelectionKey);
+                } else {
+                    //add course to repository
+                    Log.d("TestCrash","Adding course to db");
+                    CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
+                    courseSelectionRepository.insert(courseSelection);
+                }
+            } else {
+                //add course to repository
+                Log.d("TestCrash","Adding course to db");
+                CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
+                courseSelectionRepository.insert(courseSelection);
+            }
+            */
+
+            //button.setText(courseId);
         }
     }
 

@@ -87,30 +87,6 @@ public class CourseSelection extends AppCompatActivity {
         courseRepository.insert(c2);
         courseRepository.insert(c3);
         courseRepository.insert(c4);
-
-        // currently things that every semester is one
-        // and course id is 0 for all
-        CourseSelectionObject cs1 = new CourseSelectionObject(1, c1.getId());
-        CourseSelectionObject cs2 = new CourseSelectionObject(1, course2.getId());
-        CourseSelectionObject cs3 = new CourseSelectionObject(1, c3.getId());
-        CourseSelectionObject cs4 = new CourseSelectionObject(1, c4.getId());
-        CourseSelectionObject cs5 = new CourseSelectionObject(2, c1.getId());
-        CourseSelectionObject cs6 = new CourseSelectionObject(2, c2.getId());
-        CourseSelectionObject cs7 = new CourseSelectionObject(2, c3.getId());
-        CourseSelectionObject cs8 = new CourseSelectionObject(2, c4.getId());
-        CourseSelectionObject cs9 = new CourseSelectionObject(3, c3.getId());
-        CourseSelectionObject cs10 = new CourseSelectionObject(1, course3.getId());
-
-        courseSelectionRepository.insert(cs1);
-        courseSelectionRepository.insert(cs2);
-        courseSelectionRepository.insert(cs3);
-        courseSelectionRepository.insert(cs4);
-        courseSelectionRepository.insert(cs5);
-        courseSelectionRepository.insert(cs6);
-        courseSelectionRepository.insert(cs7);
-        courseSelectionRepository.insert(cs8);
-        courseSelectionRepository.insert(cs9);
-        courseSelectionRepository.insert(cs10);
     }
 
 }

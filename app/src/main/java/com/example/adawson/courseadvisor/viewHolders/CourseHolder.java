@@ -21,6 +21,7 @@ public class CourseHolder extends RecyclerView.ViewHolder {
     TextView creditHours;
 
     int currentSemester;
+    private String oldCourseId;
 
     private static final String TAG = "logging";
 
@@ -53,7 +54,12 @@ public class CourseHolder extends RecyclerView.ViewHolder {
         Intent intent = new Intent();
         // the course ID
         String message = courseID.getText().toString();
+        //intent.putExtra(Keys.CURRENT_COURSE,oldCourseId);
         ((Activity)courseView.getContext()).setResult(Activity.RESULT_OK, intent.putExtra(Keys.HLDMSG, message));
         ((Activity)courseView.getContext()).finish();
+    }
+
+    public void setOldCourseId(String oldCourseId) {
+        this.oldCourseId = oldCourseId;
     }
 }

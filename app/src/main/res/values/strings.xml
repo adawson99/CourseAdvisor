@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Course Adviser Home</string>
+    <string name="app_name">Course Advisor Home</string>
     <string name="course_selection">Course Selection</string>
 
     <string name="semester">Current Semester</string>
 
-    <string name="course_1">Major Course</string>
-    <string name="course">Placeholder Course</string>
-    <string name="course_2">Outside Major</string>
-    <string name="course_3">Minor Course</string>
+    <string name="course_1">Course 1</string>
+    <string name="course">Course 4</string>
+    <string name="course_2">Course 2</string>
+    <string name="course_3">Course 3</string>
     <string name="credits">0</string>
 
     //string for passing semester id
