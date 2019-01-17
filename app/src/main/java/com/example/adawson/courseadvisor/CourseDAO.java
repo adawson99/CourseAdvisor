@@ -1,6 +1,7 @@
 package com.example.adawson.courseadvisor;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -40,4 +41,8 @@ public interface CourseDAO {
     //get key by courseId
     @Query("SELECT _key FROM course_table WHERE id LIKE :id")
     int getCourseKeyById(String id);
+
+    // get credits by courseId
+    @Query("SELECT credits FROM course_table WHERE id LIKE :id")
+    int getCreditsByCourseId(String id);
 }

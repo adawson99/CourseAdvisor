@@ -27,6 +27,7 @@ public class Home extends AppCompatActivity {
     View view1, view2, view3, view4, view5, view6, view7, view8;
     Intent editSem;
     int semesterId;
+    TextView creditHours;
 
     // for editing the fragment
     private FragmentManager fm = getSupportFragmentManager();
@@ -143,16 +144,19 @@ public class Home extends AppCompatActivity {
 
     // update the credits on the home screen for each semester
     public void updateCredits(String[] semesterCourses, Fragment fragment) {
-        TextView creditHours;
         int creditCount = 0;
 
         for (int i = 0; i < semesterCourses.length; i++) {
             creditHours = fragment.getView().findViewById(R.id.creditHours);
 
-            // actually count based on the courses
-            creditHours.setText("16");
-        }
+           int  credits = 1;
+            //int credits = courseRepository.getCreditsByCourseId(semesterCourses[i]);
+            creditCount += credits;
+            Log.i(TAG, "the current credit count " + creditCount);
 
+        }
+        // actually count based on the courses
+        creditHours.setText("16");
     }
 
     // all the courseSelection objects from database and fills into the view for each fragment
