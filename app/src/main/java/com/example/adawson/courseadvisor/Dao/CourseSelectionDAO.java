@@ -46,7 +46,8 @@ public interface CourseSelectionDAO {
     @Query("SELECT courseId FROM course_selection_table WHERE semesterId > :id")
     LiveData<List<String>> getAllCoursesAfter(int id);
 
-    //integer
+    @Query("UPDATE course_selection_table SET courseId = :courseId WHERE courseLoc = :courseLoc")
+    void updateCourse(String courseId, int courseLoc);
 
 
 }
