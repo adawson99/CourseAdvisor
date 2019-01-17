@@ -16,15 +16,23 @@ public class CourseSelectionObject {
     @ColumnInfo(name="courseId")
     private String course;
 
+    @ColumnInfo(name="courseLoc")
+    private int courseLoc;
+
     // hhmmm?
-    public CourseSelectionObject(int semester, String course) {
+    public CourseSelectionObject(int semester, String course, int courseLoc) {
         this.semester = semester;
         this.course = course;
+        this.courseLoc = courseLoc;
     }
 
     public int getId() { return _id; }
 
     public void setId(int _id) { this._id = _id; }
+
+    public int getCourseLoc() { return courseLoc; }
+
+    public void setCourseLoc(int courseLoc) { this.courseLoc = courseLoc; }
 
     public int getSemester() { return semester; }
 
