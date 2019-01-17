@@ -30,7 +30,8 @@ public class UserRepository {
         new updateAsyncTask(userDAO).execute(majorName);
     }
 
-    public String getMajor() {//return userDAO.getMajor();
+    public String getMajor() {
+        //return userDAO.getMajor();
         return "Computer Science";
     }
 

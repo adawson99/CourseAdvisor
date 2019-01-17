@@ -20,6 +20,7 @@ import com.example.adawson.courseadvisor.model.Semester;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 // changes so that it implements the semester_preview_fragment
 public class Home extends AppCompatActivity {
@@ -27,7 +28,11 @@ public class Home extends AppCompatActivity {
     View view1, view2, view3, view4, view5, view6, view7, view8;
     Intent editSem;
     int semesterId;
-    TextView creditHours;
+
+    // for each instance of populating credits?
+   // Integer credits = (Integer) 0;
+    // the count for the semester
+    //int creditCount = 0;
 
     // for editing the fragment
     private FragmentManager fm = getSupportFragmentManager();
@@ -145,25 +150,60 @@ public class Home extends AppCompatActivity {
     }
 
     // update the credits on the home screen for each semester
-    public void updateCredits(String[] semesterCourses, Fragment fragment) {
-        int creditCount = 0;
-
-        for (int i = 0; i < semesterCourses.length; i++) {
-            creditHours = fragment.getView().findViewById(R.id.creditHours);
-
-
-            // get the credits based on the course id
-            //int credits = courseRepository.getCreditsByCourseId(semesterCourses[i]);
-            if (semesterCourses[i] != null) {
-                creditCount += 4;
+    public void updateCredits(final String[] semesterCourses, final Fragment fragment) {
+        final ArrayList<String> shortList = new ArrayList<>();
+        for (String s: semesterCourses) {
+            if (s != null) {
+                shortList.add(s);
             }
-            Log.i(TAG, "the current credit count " + creditCount);
-
         }
-        Log.i(TAG, "final creditCount" + creditCount);
-        // actually count based on the courses
-        creditHours.setText(creditCount + "");
+
+        final AtomicInteger courseCount = new AtomicInteger(0);
+        final AtomicInteger creditCount = new AtomicInteger(0);
+
+        Log.i(TAG, "this is in update Credits now / length of semestercourse " + shortList.size());
+        for (int i = 0; i < shortList.size(); i++) {
+            final TextView creditHours = fragment.getView().findViewById(R.id.creditHours);
+            final String course = shortList.get(i);
+
+            courseRepository.getCreditsByCourse(course).observe(this,
+                    new Observer<Integer>() {
+                        @Override
+                        public void onChanged(@Nullable Integer credits) {
+
+                            // credits = integer;
+                            if (credits != null) {
+                                //printCredits(credits);
+                                Log.i(TAG, course + " semesterCourse[i] and credits " + credits);
+                                int creditCountEdit = creditCount.addAndGet(credits);
+                                Log.i(TAG, creditCountEdit + " creditCount and semestercourse[i] " + course);
+                                int courseCountEdit = courseCount.addAndGet(1);
+                                Log.i(TAG, courseCountEdit + " courseCount and semestercourse[i] " + course);
+                                if (courseCountEdit == shortList.size()) {
+                                    Log.i(TAG, "setting text to " + Integer.toString(creditCountEdit));
+                                    Log.i(TAG, "the fragment to see " + fragment);
+                                    creditHours.setText(Integer.toString(creditCountEdit));
+                                }
+                            }
+                        }
+                    });
+
+        // get the credits based on the course id
+        //int credits = courseRepository.getCreditsByCourseId(semesterCourses[i]);
     }
+
+    }
+/*
+    public void printCredits(Integer credits) {
+        if (credits != null) {
+            creditCount += credits;
+            Log.i(TAG, "in update credits and there are " + credits + " that are new");
+            Log.i(TAG, "the total now is " + creditCount);
+            //updates the text view with the new credit count
+            creditHours.setText(creditCount + "");
+        }
+    }
+    */
 
     // all the courseSelection objects from database and fills into the view for each fragment
     public void setFragmentCourseIds(List<CourseSelectionObject> courseSelectionList, FragmentManager fm) {
