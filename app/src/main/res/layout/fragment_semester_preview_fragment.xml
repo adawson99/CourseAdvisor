@@ -26,21 +26,18 @@
         android:id="@+id/course1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/major"
         android:text="@string/course_1" />
 
     <TextView
         android:id="@+id/course2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/outsideMajor"
         android:text="@string/course_2" />
 
     <TextView
         android:id="@+id/course3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/minor"
         android:text="@string/course_3" />
 
     <RelativeLayout
@@ -52,9 +49,8 @@
             android:id="@+id/course4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/major"
             android:baselineAligned="false"
-            android:text="@string/course_1" />
+            android:text="@string/course" />
 
         <TextView
             android:id="@+id/creditHours"

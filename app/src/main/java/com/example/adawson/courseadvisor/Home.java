@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.adawson.courseadvisor.model.Course;
@@ -27,12 +28,32 @@ public class Home extends AppCompatActivity {
     Intent editSem;
     int semesterId;
 
+    // for editing the fragment
+    private FragmentManager fm = getSupportFragmentManager();
+    private Fragment s1;
+    private  Fragment s2;
+    private Fragment s3;
+    private Fragment s4;
+    private Fragment s5;
+    private Fragment s6;
+    private Fragment s7;
+    private Fragment s8;
+
+    String[] sem1Course = new String[8];
+    String[] sem2Course = new String[8];
+    String[] sem3Course = new String[8];
+    String[] sem4Course = new String[8];
+    String[] sem5Course = new String[8];
+    String[] sem6Course = new String[8];
+    String[] sem7Course = new String[8];
+    String[] sem8Course = new String[8];
+
+    private List<CourseSelectionObject> courseSelectionList = new ArrayList<>();
+
     Activity activity = this;
 
     private static final String TAG = "logging" ;
 
-    // for editing the fragment
-    private FragmentManager fm = getSupportFragmentManager();
 
     // list of semesters
     List<Semester> semesterList = new ArrayList<>();
@@ -84,6 +105,137 @@ public class Home extends AppCompatActivity {
         } else {
             // in progress
             Log.i(TAG, "there are semester, so load them into view");
+        }
+
+        s1 = fm.findFragmentById(R.id.semester_1_fragment);
+        s2 = fm.findFragmentById(R.id.semester_2_fragment);
+        s3 = fm.findFragmentById(R.id.semester_3_fragment);
+        s4 = fm.findFragmentById(R.id.semester_4_fragment);
+        s5 = fm.findFragmentById(R.id.semester_5_fragment);
+        s6 = fm.findFragmentById(R.id.semester_6_fragment);
+        s7 = fm.findFragmentById(R.id.semester_7_fragment);
+        s8 = fm.findFragmentById(R.id.semester_8_fragment);
+
+        // updates the list of courseSelection objects, triggered by changes in course selections
+        courseSelectionRepository.getAllPairings().observe(
+                this, new Observer<List<CourseSelectionObject>>() {
+                    @Override
+                    public void onChanged(@Nullable List<CourseSelectionObject> courseSelections) {
+                        courseSelectionList = courseSelections;
+                        //using the populated list of semesters, the courseIds fora specific semester can be pulled out
+                        // they are stored in courseIds
+                        setFragmentCourseIds(courseSelectionList, fm);
+                        Log.i(TAG, "courseSelections updating");
+
+                        // add calls for all the semesters
+                        updateCredits(sem1Course, s1);
+                        updateCredits(sem1Course, s2);
+                        updateCredits(sem1Course, s3);
+                        updateCredits(sem1Course, s4);
+                        updateCredits(sem1Course, s5);
+                        updateCredits(sem1Course, s6);
+                        updateCredits(sem1Course, s7);
+                        updateCredits(sem1Course, s8);
+                    }
+                });
+
+    }
+
+    // update the credits on the home screen for each semester
+    public void updateCredits(String[] semesterCourses, Fragment fragment) {
+        TextView creditHours;
+        int creditCount = 0;
+
+        for (int i = 0; i < semesterCourses.length; i++) {
+            creditHours = fragment.getView().findViewById(R.id.creditHours);
+
+            // actually count based on the courses
+            creditHours.setText("16");
+        }
+
+    }
+
+    // all the courseSelection objects from database and fills into the view for each fragment
+    public void setFragmentCourseIds(List<CourseSelectionObject> courseSelectionList, FragmentManager fm) {
+
+        int i = 0;
+        CourseSelectionObject cs;
+        int a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0;
+        // run through all pairings and add to List for each semester of courses
+        for (int j=0; j<courseSelectionList.size(); j++) {
+            cs = courseSelectionList.get(j);
+            switch (cs.getSemester()) {
+                // adds the course to the list of courses for that semester, and  sends this course name, the course number, and the fragment to fillInCourses()
+                case 1:
+                    sem1Course[a] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),a, s1);
+                    a++;
+                    break;
+                case 2:
+                    sem2Course[b] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),b, s2);
+                    b++;
+                    break;
+                case 3:
+                    sem3Course[c] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),c, s3);
+                    c++;
+                    break;
+                case 4:
+                    sem4Course[d] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),d, s4);
+                    d++;
+                    break;
+                case 5:
+                    sem5Course[e] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),e, s5);
+                    e++;
+                    break;
+                case 6:
+                    sem6Course[f] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),f, s6);
+                    f++;
+                    break;
+                case 7:
+                    sem7Course[g] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),g, s7);
+                    g++;
+                    break;
+                case 8:
+                    sem8Course[h] = cs.getCourse();
+                    fillInCourses(cs.getCourse(),h, s8);
+                    h++;
+                    break;
+            }
+            }
+        }
+
+    // writes on the buttons depending on courseselectionobejcts in database
+    public void fillInCourses(String courseName, int courseNumber, Fragment fragment) {
+
+        // this makes the entire app get upset about non asychronous database access
+        //String courseName = courseRepository.getCourseNameByKey(courseId);
+
+        TextView view;
+
+        switch (courseNumber) {
+            //course number 1
+            case 0:
+                view = fragment.getView().findViewById(R.id.course1);
+                view.setText(courseName);
+                break;
+            case 1:
+                view = fragment.getView().findViewById(R.id.course2);
+                view.setText(courseName);
+                break;
+            case 2:
+                view = fragment.getView().findViewById(R.id.course3);
+                view.setText(courseName);
+                break;
+            case 3:
+                view = fragment.getView().findViewById(R.id.course4);
+                view.setText(courseName);
+                break;
         }
 
     }
