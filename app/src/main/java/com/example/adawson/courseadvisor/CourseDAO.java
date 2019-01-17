@@ -32,7 +32,7 @@ public interface CourseDAO {
 
     //get course name by id
     @Query("SELECT name FROM course_table WHERE id LIKE :id")
-    String getCourseNameById(String id);
+    LiveData<String> getCourseNameById(String id);
 
 
     @Query("SELECT major FROM course_table WHERE id LIKE :id")
@@ -48,5 +48,5 @@ public interface CourseDAO {
 
     // get credits by courseId
     @Query("SELECT credits FROM course_table WHERE id LIKE :id")
-    int getCreditsByCourseId(String id);
+    LiveData<Integer> getCreditsByCourseId(String id);
 }

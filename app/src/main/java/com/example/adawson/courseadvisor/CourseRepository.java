@@ -31,10 +31,38 @@ public class CourseRepository {
     }
 
     //added to get course name by id
-    String getCourseNameById(String id) {
+    LiveData<String> getCourseNameById(String id) {
         return courseDAO.getCourseNameById(id);
     }
+    /*
+    String getCourseNameById(String id) {
+        getNameByIdAsyncTask task = new getNameByIdAsyncTask(courseDAO,id);
+        task.execute();
+        return task.courseName;
+    }
 
+    private static class getNameByIdAsyncTask extends AsyncTask<Void, Void, Void> {
+        private CourseDAO mAsyncTaskDao;
+        private String stringVal;
+        public String courseName;
+
+        getNameByIdAsyncTask(CourseDAO dao, String s) {
+            stringVal = s;
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            courseName = mAsyncTaskDao.getCourseNameById(stringVal);
+            return null;
+        }
+    }
+    */
+
+    // live data of credits for the data
+    LiveData<Integer> getCreditsByCourse(String id) {
+        return courseDAO.getCreditsByCourseId(id);
+    }
 /*
     // get credits based on course Id
     public int getCreditsByCourseId(String id) {

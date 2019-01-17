@@ -32,6 +32,7 @@ public class SemesterEdit extends AppCompatActivity {
     private CourseSelectionRepository courseSelectionRepository;
     // for holding CourseSelections of the semester
     private List<CourseSelectionObject> courseSelectionList = new ArrayList<>();
+    private String courseName;
 
     private static final String TAG = "logging";
     String msgKey = "msgKey";
@@ -81,6 +82,7 @@ public class SemesterEdit extends AppCompatActivity {
 
     // fills the courseId list with the appropriate courses
     public void setThisSemesterCourseIds(List<CourseSelectionObject> courseSelections) {
+        // updates the list of courseSelection objects, triggered by changes in course selections
         int i = 0;
         CourseSelectionObject cs;
         Log.i(TAG, "the # of pairings: " + courseSelections.size());
@@ -90,11 +92,11 @@ public class SemesterEdit extends AppCompatActivity {
                     "is " + cs.getSemester());
             if (cs.getSemester() == currentSemester) {
                 //
-                courseIds[i] = cs.getCourse();
-                Log.i(TAG, "this is i: " + i);
-                nameButtons(cs.getCourse(), i);
-                Log.i(TAG, "getting the course: " + cs.getCourse());
-                i++;
+                String courseId = cs.getCourse();
+                int courseLoc = cs.getCourseLoc();
+
+                courseIds[courseLoc-1] = courseId;
+                nameButtons(courseId,courseLoc-1);
             }
         }
         //for debugging, see all the courses in that semester
@@ -155,67 +157,78 @@ public class SemesterEdit extends AppCompatActivity {
         String message = v.getText().toString();
         Intent intent = new Intent(this,CourseSelection.class);
 
-        // attempting to record which button the data should be bound to visually
-        buttonId = v.getId();
-
-        //Button button = (Button) findViewById(buttonId);
-        //String currentCourse = button.getText().toString();
-        //intent.putExtra(Keys.CURRENT_COURSE,currentCourse);
-
         intent.putExtra(msgKey,message);
-        //startActivity(intent);
-        startActivityForResult(intent, Keys.REQUEST_CODE);
+        // attempting to record which button the data should be bound to visually
+        //buttonId = v.getId();
+        buttonId = view.getId();
+
+        Button button = (Button) findViewById(buttonId);
+
+        switch(buttonId) {
+            case R.id.button:
+                startActivityForResult(intent, Keys.REQUEST_CODE1);
+                break;
+            case R.id.button2:
+                startActivityForResult(intent, Keys.REQUEST_CODE2);
+                break;
+            case R.id.button3:
+                startActivityForResult(intent, Keys.REQUEST_CODE3);
+                break;
+            case R.id.button4:
+                startActivityForResult(intent, Keys.REQUEST_CODE4);
+                break;
+            case R.id.button5:
+                startActivityForResult(intent, Keys.REQUEST_CODE5);
+                break;
+            case R.id.button6:
+                startActivityForResult(intent, Keys.REQUEST_CODE6);
+                break;
+        }
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.d("TestCrash","in onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Keys.REQUEST_CODE && resultCode == RESULT_OK) {
-            Log.d("TestCrash","RESULT_OK");
+
+        CourseDatabase db = CourseDatabase.getDatabase(getApplication());
+        Cursor mcursor = db.query("SELECT * from course_selection_table",null);
+        int courseLoc = 0;
+        if (requestCode == Keys.REQUEST_CODE1 && resultCode == RESULT_OK) {
+            courseLoc = 1;
+        } else if (requestCode == Keys.REQUEST_CODE2 && resultCode == RESULT_OK) {
+            courseLoc = 2;
+        } else if (requestCode == Keys.REQUEST_CODE3 && resultCode == RESULT_OK) {
+            courseLoc = 3;
+        } else if (requestCode == Keys.REQUEST_CODE4 && resultCode == RESULT_OK) {
+            courseLoc = 4;
+        } else if (requestCode == Keys.REQUEST_CODE5 && resultCode == RESULT_OK) {
+            courseLoc = 5;
+        } else if (requestCode == Keys.REQUEST_CODE6 && resultCode == RESULT_OK) {
+            courseLoc = 6;
+        }
+
+        if (resultCode==RESULT_OK) {
             String courseId = data.getStringExtra(Keys.HLDMSG);
-            String oldCourseId = data.getStringExtra(Keys.CURRENT_COURSE);
-            Log.i("TestCrash","oldCourseId: "+oldCourseId);
-
-            if (courseId==null) {
-                Log.d("TestCrash","courseId is null");
-            }
-            Log.i("TestCrash", courseId + " is the course!");
-            //Button button = (Button) findViewById(R.id.button);
-
-            //replace the current course with the selected course
-            //String oldCourseId = button.getText().toString();
-            //Log.i("TestCrash","oldCourseId: "+oldCourseId);
-
-            CourseDatabase db = CourseDatabase.getDatabase(getApplication());
-            Log.d("TestCrash","Adding course to db");
-            CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId, 1);
-            courseSelectionRepository.insert(courseSelection);
-            /*
-            Cursor mcursor = db.query("SELECT * from course_selection_table",null);
-
             if (mcursor.moveToFirst()) {
-                mcursor = db.query("SELECT * from course_selection_table WHERE semesterId = currentSemester AND courseId = oldCourseId",null);
+                mcursor = db.query("SELECT * from course_selection_table WHERE semesterId = "+currentSemester+" AND courseLoc = "+courseLoc,null);
                 if (mcursor.moveToFirst()) {
                     //replace course
-                    Log.d("TestCrash","Replacing old course with new in the db");
-                    int courseSelectionKey = courseRepository.getCourseKeyById(oldCourseId);
-                    courseSelectionRepository.replaceCourse(courseId,courseSelectionKey);
+                    Log.d("TestCrash","Replacing old course with "+courseId+" in location "+courseLoc);
+                    courseSelectionRepository.updateCourse(courseId,courseLoc);
                 } else {
                     //add course to repository
-                    Log.d("TestCrash","Adding course to db");
-                    CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
+                    Log.d("TestCrash","Adding "+courseId+" to db at location "+courseLoc);
+                    CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId,courseLoc);
                     courseSelectionRepository.insert(courseSelection);
                 }
             } else {
                 //add course to repository
-                Log.d("TestCrash","Adding course to db");
-                CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
+                Log.d("TestCrash","Adding "+courseId+" to empty db at location "+courseLoc);
+                CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId,courseLoc);
                 courseSelectionRepository.insert(courseSelection);
             }
-            */
-
-            //button.setText(courseId);
         }
     }
 
