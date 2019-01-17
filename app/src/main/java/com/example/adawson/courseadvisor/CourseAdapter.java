@@ -13,6 +13,7 @@ import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseHolder> {
     private List<Course> courses;
+    private String oldCourseId;
 
     public CourseAdapter() {
         this.courses = new ArrayList<Course>();
@@ -23,11 +24,17 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseHolder> {
         notifyDataSetChanged();
     }
 
+    public void setOldCourseId(String oldCourseId) {
+        this.oldCourseId = oldCourseId;
+    }
+
     @Override
     public CourseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.course_view,parent,false);
-        return new CourseHolder(view);
+        CourseHolder ch = new CourseHolder(view);
+        //ch.setOldCourseId(oldCourseId);
+        return ch;
     }
 
     @Override
