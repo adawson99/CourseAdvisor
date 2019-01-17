@@ -71,7 +71,7 @@ public class SemesterEdit extends AppCompatActivity {
                     @Override
                     public void onChanged(@Nullable List<CourseSelectionObject> courseSelections) {
                         courseSelectionList = courseSelections;
-                        //using the populated list of semesters, the courseIds fora specific semester can be pulled out
+                        //using the populated list of semesters, the courseIds for a specific semester can be pulled out
                         // they are stored in courseIds
                         setThisSemesterCourseIds(courseSelectionList);
                         Log.i(TAG, "courseSelections updating");
@@ -191,7 +191,6 @@ public class SemesterEdit extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.d("TestCrash","in onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
-
 
         CourseDatabase db = CourseDatabase.getDatabase(getApplication());
         Cursor mcursor = db.query("SELECT * from course_selection_table",null);

@@ -15,10 +15,12 @@ import com.example.adawson.courseadvisor.model.User;
 
 public class IntroActivity extends AppCompatActivity {
     String majorName;
-
+    private static final String TAG = "logging" ;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate: Intro Activity");
         setContentView(R.layout.activity_intro);
 
         //Gets the selected major if returning from the MajorSelection activity

@@ -34,6 +34,10 @@ public interface CourseDAO {
     @Query("SELECT name FROM course_table WHERE id LIKE :id")
     LiveData<String> getCourseNameById(String id);
 
+
+    @Query("SELECT major FROM course_table WHERE id LIKE :id")
+    String getCourseMajorById(String id);
+
     // counts the items in the table
     @Query("SELECT COUNT(*) from course_table")
     int countItems();

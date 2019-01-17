@@ -25,8 +25,6 @@ public class CourseRepository {
         return courses;
     }
 
-
-
     //added to get course name by key
     String getCourseNameByKey(int key) {
         return courseDAO.getCourseNameByKey(key);
@@ -91,6 +89,16 @@ public class CourseRepository {
         return courseDAO.getCourseKeyById(id);
     }
 
+    //get course major by id
+    String getMajorById(String id) {
+        //return courseDAO.getCourseMajorById(id);
+        if (id.startsWith("CSC")) {
+            return "Computer Science";
+        } else {
+            return "English";
+        }
+    }
+
    // inserts all the courses in the list into the database
     public void insert(List<Course> courses) {
         courseDAO.insertAll(courses);
@@ -105,6 +113,8 @@ public class CourseRepository {
     public void insert(Course course) {
         new insertAsyncTask(courseDAO).execute(course);
     }
+
+    public LiveData<List<Course>> getMajorCourses(String major) { return courseDAO.getCourseBy(major); }
 
     private static class insertAsyncTask extends AsyncTask<Course, Void, Void> {
         private CourseDAO mAsyncTaskDao;
