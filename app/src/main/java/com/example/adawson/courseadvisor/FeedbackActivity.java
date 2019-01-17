@@ -74,9 +74,9 @@ public class FeedbackActivity extends AppCompatActivity {
         majorCreditsDone.setText("Completed: " + Integer.toString(majorcredits));
         totalCreditsDone.setText("Completed: " + Integer.toString(credits));
         outsideCreditsDone.setText("Completed: " + Integer.toString(othercredits));
-        majorCreditsLeft.setText("Completed: " + Integer.toString(majorLeft));
-        otherCreditsLeft.setText("Completed: " + Integer.toString(otherLeft));
-        totalCreditsLeft.setText("Completed: " + Integer.toString(totalLeft));
+        majorCreditsLeft.setText("Needed: " + Integer.toString(majorLeft));
+        otherCreditsLeft.setText("Needed: " + Integer.toString(otherLeft));
+        totalCreditsLeft.setText("Needed: " + Integer.toString(totalLeft));
 
     }
 
