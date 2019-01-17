@@ -35,6 +35,10 @@ public class CourseRepository {
         return courseDAO.getCourseNameById(id);
     }
 
+    // live data of credits for the data
+    LiveData<Integer> getCreditsByCourse(String id) {
+        return courseDAO.getCreditsByCourseId(id);
+    }
 /*
     // get credits based on course Id
     public int getCreditsByCourseId(String id) {
