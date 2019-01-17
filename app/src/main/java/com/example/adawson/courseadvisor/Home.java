@@ -40,6 +40,8 @@ public class Home extends AppCompatActivity {
     private Fragment s7;
     private Fragment s8;
 
+    CourseDatabase db;
+
     String[] sem1Course = new String[8];
     String[] sem2Course = new String[8];
     String[] sem3Course = new String[8];
@@ -75,7 +77,7 @@ public class Home extends AppCompatActivity {
 
         setListenersForAllFragments();
 
-        CourseDatabase db = CourseDatabase.getDatabase(getApplication());
+        db = CourseDatabase.getDatabase(getApplication());
 
         //
         courseRepository = new CourseRepository(getApplication());
@@ -130,13 +132,13 @@ public class Home extends AppCompatActivity {
 
                         // add calls for all the semesters
                         updateCredits(sem1Course, s1);
-                        updateCredits(sem1Course, s2);
-                        updateCredits(sem1Course, s3);
-                        updateCredits(sem1Course, s4);
-                        updateCredits(sem1Course, s5);
-                        updateCredits(sem1Course, s6);
-                        updateCredits(sem1Course, s7);
-                        updateCredits(sem1Course, s8);
+                        updateCredits(sem2Course, s2);
+                        updateCredits(sem3Course, s3);
+                        updateCredits(sem4Course, s4);
+                        updateCredits(sem5Course, s5);
+                        updateCredits(sem6Course, s6);
+                        updateCredits(sem7Course, s7);
+                        updateCredits(sem8Course, s8);
                     }
                 });
 
@@ -149,14 +151,16 @@ public class Home extends AppCompatActivity {
         for (int i = 0; i < semesterCourses.length; i++) {
             creditHours = fragment.getView().findViewById(R.id.creditHours);
 
-           int  credits = 1;
             //int credits = courseRepository.getCreditsByCourseId(semesterCourses[i]);
-            creditCount += credits;
+            if (semesterCourses[i] != null) {
+                creditCount += 4;
+            }
             Log.i(TAG, "the current credit count " + creditCount);
 
         }
+        Log.i(TAG, "final creditCount" + creditCount);
         // actually count based on the courses
-        creditHours.setText("16");
+        creditHours.setText(creditCount + "");
     }
 
     // all the courseSelection objects from database and fills into the view for each fragment
