@@ -41,5 +41,12 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
 
-
+    //Feedback UI strings
+    <string name="otherLeft">Needed: 64</string>
+    <string name="majorLeft">Needed: 44</string>
+    <string name="totalLeft">Needed: 128</string>
+    <string name="Taken">Completed: 0</string>
+    <string name="majorCredits">Major Credits</string>
+    <string name="outsideCredits">Outside Credits</string>
+    <string name="totalCredits">Total Credits</string>
 </resources>

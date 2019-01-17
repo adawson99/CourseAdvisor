@@ -34,6 +34,8 @@ public class CourseRepository {
     LiveData<String> getCourseNameById(String id) {
         return courseDAO.getCourseNameById(id);
     }
+
+    LiveData<Course> getCourseById(String id) { return courseDAO.getCourseById(id);}
     /*
     String getCourseNameById(String id) {
         getNameByIdAsyncTask task = new getNameByIdAsyncTask(courseDAO,id);
