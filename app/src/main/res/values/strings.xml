@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Course Adviser Home</string>
+    <string name="app_name">Course Advisor Home</string>
     <string name="course_selection">Course Selection</string>
 
     <string name="semester">Current Semester</string>
