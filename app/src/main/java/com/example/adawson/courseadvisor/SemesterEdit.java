@@ -89,6 +89,7 @@ public class SemesterEdit extends AppCompatActivity {
             Log.i(TAG, "the current semesters is " + currentSemester + " and the semester of this course" +
                     "is " + cs.getSemester());
             if (cs.getSemester() == currentSemester) {
+                //
                 courseIds[i] = cs.getCourse();
                 Log.i(TAG, "this is i: " + i);
                 nameButtons(cs.getCourse(), i);
