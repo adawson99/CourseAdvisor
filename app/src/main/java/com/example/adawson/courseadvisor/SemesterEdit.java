@@ -189,7 +189,7 @@ public class SemesterEdit extends AppCompatActivity {
 
             CourseDatabase db = CourseDatabase.getDatabase(getApplication());
             Log.d("TestCrash","Adding course to db");
-            CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId,1);
+            CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId, 1);
             courseSelectionRepository.insert(courseSelection);
             /*
             Cursor mcursor = db.query("SELECT * from course_selection_table",null);

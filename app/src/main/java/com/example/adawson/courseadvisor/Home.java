@@ -151,6 +151,8 @@ public class Home extends AppCompatActivity {
         for (int i = 0; i < semesterCourses.length; i++) {
             creditHours = fragment.getView().findViewById(R.id.creditHours);
 
+
+            // get the credits based on the course id
             //int credits = courseRepository.getCreditsByCourseId(semesterCourses[i]);
             if (semesterCourses[i] != null) {
                 creditCount += 4;
