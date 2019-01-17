@@ -95,8 +95,10 @@ public class SemesterEdit extends AppCompatActivity {
                 String courseId = cs.getCourse();
                 int courseLoc = cs.getCourseLoc();
 
-                courseIds[courseLoc-1] = courseId;
-                nameButtons(courseId,courseLoc-1);
+                if (courseLoc > 0) {
+                    courseIds[courseLoc - 1] = courseId;
+                    nameButtons(courseId, courseLoc - 1);
+                }
             }
         }
         //for debugging, see all the courses in that semester
