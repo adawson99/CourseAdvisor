@@ -24,7 +24,7 @@ public class SemesterEdit extends AppCompatActivity {
     private int currentSemester;
 
     // list of course IDs from the semester based on courseSelection
-    private List<String> courseIds = new ArrayList<>();
+    private String[] courseIds = new String[8];
 
     // the semester repository
     private CourseRepository courseRepository;
@@ -89,7 +89,7 @@ public class SemesterEdit extends AppCompatActivity {
             Log.i(TAG, "the current semesters is " + currentSemester + " and the semester of this course" +
                     "is " + cs.getSemester());
             if (cs.getSemester() == currentSemester) {
-                courseIds.add(cs.getCourse());
+                courseIds[i] = cs.getCourse();
                 Log.i(TAG, "this is i: " + i);
                 nameButtons(cs.getCourse(), i);
                 Log.i(TAG, "getting the course: " + cs.getCourse());
@@ -102,7 +102,6 @@ public class SemesterEdit extends AppCompatActivity {
 
     // writes on the buttons depending on courseselectionobejcts in database
     public void nameButtons(String courseName, int courseNumber) {
-        String courseId = "test";
 
         // this makes the entire app get upset about non asychronous database access
 
@@ -142,9 +141,9 @@ public class SemesterEdit extends AppCompatActivity {
 
     // prints out the names of the courses whose ids are in courseIds
     public void printCourseNames() {
-        int size = courseIds.size();
+        int size = courseIds.length;
         for (int i = 0; i<size; i++) {
-            Log.i(TAG, courseIds.get(i) + "I am printing a course name, but need to get it from database!");
+            Log.i(TAG, courseIds[i] + "I am printing a course name, but need to get it from database!");
         }
 
     }

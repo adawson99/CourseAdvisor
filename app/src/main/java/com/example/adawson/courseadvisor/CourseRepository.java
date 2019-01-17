@@ -25,6 +25,8 @@ public class CourseRepository {
         return courses;
     }
 
+
+
     //added to get course name by key
     String getCourseNameByKey(int key) {
         return courseDAO.getCourseNameByKey(key);
@@ -34,6 +36,31 @@ public class CourseRepository {
     String getCourseNameById(String id) {
         return courseDAO.getCourseNameById(id);
     }
+
+/*
+    // get credits based on course Id
+    public int getCreditsByCourseId(String id) {
+        //return courseDAO.getCreditsByCourseId(id);
+        return new getCreditsAsyncTask(courseDAO).execute(id);
+    }
+
+    private static class getCreditsAsyncTask extends AsyncTask<String, Void, Void> {
+        private CourseDAO mAsyncTaskDao;
+
+        getCreditsAsyncTask(CourseDAO dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        protected int doInBackground(String... params) {
+           int credits = mAsyncTaskDao.getCreditsByCourseId(params[0]);
+           return credits;
+        }
+
+        protected void onPostExecute(Integer result) {
+            return result;
+        }
+    }
+*/
 
     //get key by id
     int getCourseKeyById(String id) {
