@@ -154,22 +154,44 @@ public class SemesterEdit extends AppCompatActivity {
         String message = v.getText().toString();
         Intent intent = new Intent(this,CourseSelection.class);
 
-        // attempting to record which button the data should be bound to visually
-        buttonId = v.getId();
-
-        //Button button = (Button) findViewById(buttonId);
-        //String currentCourse = button.getText().toString();
-        //intent.putExtra(Keys.CURRENT_COURSE,currentCourse);
-
         intent.putExtra(msgKey,message);
-        //startActivity(intent);
-        startActivityForResult(intent, Keys.REQUEST_CODE);
+        // attempting to record which button the data should be bound to visually
+        //buttonId = v.getId();
+        buttonId = view.getId();
+
+        Button button = (Button) findViewById(buttonId);
+
+        switch(buttonId) {
+            case R.id.button:
+                startActivityForResult(intent, Keys.REQUEST_CODE1);
+                break;
+            case R.id.button2:
+                startActivityForResult(intent, Keys.REQUEST_CODE2);
+                break;
+            case R.id.button3:
+                startActivityForResult(intent, Keys.REQUEST_CODE3);
+                break;
+            case R.id.button4:
+                startActivityForResult(intent, Keys.REQUEST_CODE4);
+                break;
+            case R.id.button5:
+                startActivityForResult(intent, Keys.REQUEST_CODE5);
+                break;
+            case R.id.button6:
+                startActivityForResult(intent, Keys.REQUEST_CODE6);
+                break;
+        }
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Log.d("TestCrash","in onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
+
+
+        //if (reques)
+
         if (requestCode == Keys.REQUEST_CODE && resultCode == RESULT_OK) {
             Log.d("TestCrash","RESULT_OK");
             String courseId = data.getStringExtra(Keys.HLDMSG);
@@ -186,15 +208,18 @@ public class SemesterEdit extends AppCompatActivity {
             //String oldCourseId = button.getText().toString();
             //Log.i("TestCrash","oldCourseId: "+oldCourseId);
 
+            /*
             CourseDatabase db = CourseDatabase.getDatabase(getApplication());
             Log.d("TestCrash","Adding course to db");
             CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
             courseSelectionRepository.insert(courseSelection);
-            /*
+            */
+            CourseDatabase db = CourseDatabase.getDatabase(getApplication());
+
             Cursor mcursor = db.query("SELECT * from course_selection_table",null);
 
             if (mcursor.moveToFirst()) {
-                mcursor = db.query("SELECT * from course_selection_table WHERE semesterId = currentSemester AND courseId = oldCourseId",null);
+                mcursor = db.query("SELECT * from course_selection_table WHERE semesterId = "+currentSemester+" AND courseId = "+oldCourseId,null);
                 if (mcursor.moveToFirst()) {
                     //replace course
                     Log.d("TestCrash","Replacing old course with new in the db");
@@ -212,7 +237,7 @@ public class SemesterEdit extends AppCompatActivity {
                 CourseSelectionObject courseSelection = new CourseSelectionObject(currentSemester,courseId);
                 courseSelectionRepository.insert(courseSelection);
             }
-            */
+
 
             //button.setText(courseId);
         }
