@@ -2,6 +2,7 @@ package com.example.adawson.courseadvisor;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -36,4 +37,7 @@ public interface CourseDAO {
     @Query("SELECT COUNT(*) from course_table")
     int countItems();
 
+    //get key by courseId
+    @Query("SELECT _key FROM course_table WHERE id LIKE :id")
+    int getCourseKeyById(String id);
 }

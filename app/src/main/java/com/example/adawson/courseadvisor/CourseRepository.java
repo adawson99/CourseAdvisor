@@ -35,6 +35,11 @@ public class CourseRepository {
         return courseDAO.getCourseNameById(id);
     }
 
+    //get key by id
+    int getCourseKeyById(String id) {
+        return courseDAO.getCourseKeyById(id);
+    }
+
    // inserts all the courses in the list into the database
     public void insert(List<Course> courses) {
         courseDAO.insertAll(courses);
