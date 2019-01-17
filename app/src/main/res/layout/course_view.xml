@@ -15,7 +15,8 @@
             android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/courseID" />
+            android:text="@string/courseID"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/courseName"
@@ -24,6 +25,7 @@
             android:layout_alignParentLeft="true"
             android:layout_weight="1"
             android:text="@string/courseName"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -44,11 +46,11 @@
         <TextView
             android:id="@+id/majorName"
             android:layout_width="match_parent"
-            android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_weight="1"
             android:text="@string/majorName"
-            android:textStyle="bold" />
+            android:textStyle="italic" />
     </LinearLayout>
 
 
