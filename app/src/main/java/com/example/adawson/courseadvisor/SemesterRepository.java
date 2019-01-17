@@ -29,7 +29,7 @@ public class SemesterRepository {
     }
 
     // get semester name
-    LiveData<String> getSemesterName(int id) {
+    String getSemesterName(int id) {
         return semesterDAO.getSemesterName(id);
     }
 

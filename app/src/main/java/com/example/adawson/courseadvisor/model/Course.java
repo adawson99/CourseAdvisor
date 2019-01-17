@@ -9,7 +9,7 @@ import java.util.HashSet;
 @Entity(tableName = "course_table")
 public class Course {
     @PrimaryKey(autoGenerate = true)
-    private int key;
+    private int _key;
     @ColumnInfo(name = "id")
     private String id;
     @ColumnInfo(name = "name")
@@ -32,9 +32,9 @@ public class Course {
         this.credits = credits;
     }
 
-    public int getKey() { return key; }
+    public int getKey() { return _key; }
 
-    public void setKey(int key) {this.key = key; }
+    public void setKey(int key) {this._key = _key; }
 
     public String getId() { return id; }
 

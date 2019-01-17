@@ -13,6 +13,8 @@ public class CourseRepository {
 
     private LiveData<List<Course>> courses;
 
+    private LiveData<String> name;
+
     public CourseRepository(Application application) {
         CourseDatabase db = CourseDatabase.getDatabase(application);
         courseDAO = db.courseDAO();
@@ -23,7 +25,11 @@ public class CourseRepository {
         return courses;
     }
 
-   // THIS ISN:T ASYNCRHONOUS?
+    //added to get course name by id
+    String getCourseNameByKey(int id) {
+        return courseDAO.getCourseNameByKey(id);
+    }
+
    // inserts all the courses in the list into the database
     public void insert(List<Course> courses) {
         courseDAO.insertAll(courses);

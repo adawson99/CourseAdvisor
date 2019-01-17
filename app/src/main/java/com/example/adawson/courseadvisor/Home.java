@@ -2,7 +2,6 @@ package com.example.adawson.courseadvisor;
 
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
@@ -10,12 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.example.adawson.courseadvisor.model.Course;
+import com.example.adawson.courseadvisor.model.CourseSelectionObject;
 import com.example.adawson.courseadvisor.model.Semester;
 
 import java.util.ArrayList;
@@ -30,9 +29,6 @@ public class Home extends AppCompatActivity {
 
     Activity activity = this;
 
-    public static final String SEMESTER_SELECTED = "SEMESTER_SELECTED";
-    private static final int REQUEST_CODE = 1001;
-
     private static final String TAG = "logging" ;
 
     // for editing the fragment
@@ -41,7 +37,10 @@ public class Home extends AppCompatActivity {
     // list of semesters
     List<Semester> semesterList = new ArrayList<>();
 
-   // the semester repository
+   // course placeholder for inserting vs querying when testing
+    private CourseRepository courseRepository;
+
+    // semester repositories
     private SemesterRepository semesterRepository;
     private CourseSelectionRepository courseSelectionRepository;
 
@@ -56,6 +55,8 @@ public class Home extends AppCompatActivity {
 
         CourseDatabase db = CourseDatabase.getDatabase(getApplication());
 
+        //
+        courseRepository = new CourseRepository(getApplication());
         // initialize semesterRepository
         semesterRepository = new SemesterRepository(getApplication());
         // initialize courseSelectionRepository
@@ -172,7 +173,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 semesterId = semesterList.get(0).getId();
                 Log.i(TAG, "The string to pass " + semesterId);
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -184,7 +185,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(1).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -196,7 +197,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(2).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -208,7 +209,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(3).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -220,7 +221,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(4).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -232,7 +233,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(5).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -244,7 +245,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(6).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });
@@ -256,7 +257,7 @@ public class Home extends AppCompatActivity {
                 Log.i(TAG, "on click triggered");
                 //Intent editSem1 = new Intent(activity, SemesterEdit.class);
                 semesterId = semesterList.get(7).getId();
-                editSem.putExtra(SEMESTER_SELECTED, semesterId);
+                editSem.putExtra(Keys.SEMESTER_SELECTED, semesterId);
                 startActivity(editSem);
             }
         });

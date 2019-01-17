@@ -39,10 +39,6 @@ public class CourseHolder extends RecyclerView.ViewHolder {
         majorName = (TextView) courseView.findViewById(R.id.majorName);
         creditHours = (TextView) courseView.findViewById(R.id.creditHours);
 
-        Intent intent = new Intent();
-        currentSemester = intent.getIntExtra(Keys.SEMESTER_SELECTED, 0);
-        Log.i(TAG, currentSemester + " current semester in CourseHolder");
-
     }
 
     public void bindCourse(Course course) {
@@ -53,19 +49,11 @@ public class CourseHolder extends RecyclerView.ViewHolder {
 
     }
     private void doClick(View courseView) {
-
+        //sends the courseId back as a result to SemesterEdit
         Intent intent = new Intent();
-
-       // Intent intent = new Intent(courseView.getContext(),SemesterEdit.class);
-       String message = courseID.getText().toString();
-        //intent.putExtra(Keys.HLDMSG,message);
-       // intent.putExtra(Keys.HLDMSG, message);
+        // the course ID
+        String message = courseID.getText().toString();
         ((Activity)courseView.getContext()).setResult(Activity.RESULT_OK, intent.putExtra(Keys.HLDMSG, message));
         ((Activity)courseView.getContext()).finish();
-
-       // Log.i(TAG, "sending " + currentSemester + " back to SemesterEdit");
-       // courseView.getContext().startActivity(intent);
-       // courseView.finish();
-
     }
 }

@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "course_selection_table")
-public class CourseSelection {
+public class CourseSelectionObject {
 
     @PrimaryKey(autoGenerate = true)
     private int _id;
@@ -14,10 +14,10 @@ public class CourseSelection {
     private int semester;
 
     @ColumnInfo(name="courseId")
-    private int course;
+    private String course;
 
     // hhmmm?
-    public CourseSelection(int semester, int course) {
+    public CourseSelectionObject(int semester, String course) {
         this.semester = semester;
         this.course = course;
     }
@@ -32,9 +32,9 @@ public class CourseSelection {
         this.semester = semester;
     }
 
-    public int getCourse() { return course; }
+    public String getCourse() { return course; }
 
-    public void setCourse(int course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 
