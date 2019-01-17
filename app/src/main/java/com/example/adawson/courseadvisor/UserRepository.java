@@ -30,6 +30,10 @@ public class UserRepository {
         new updateAsyncTask(userDAO).execute(majorName);
     }
 
+    public String getMajor() {//return userDAO.getMajor();
+        return "Computer Science";
+    }
+
     private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
         private UserDAO mAsyncTaskDao;
 

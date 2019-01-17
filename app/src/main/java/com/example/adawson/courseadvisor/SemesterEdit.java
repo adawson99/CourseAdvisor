@@ -69,7 +69,7 @@ public class SemesterEdit extends AppCompatActivity {
                     @Override
                     public void onChanged(@Nullable List<CourseSelectionObject> courseSelections) {
                         courseSelectionList = courseSelections;
-                        //using the populated list of semesters, the courseIds fora specific semester can be pulled out
+                        //using the populated list of semesters, the courseIds for a specific semester can be pulled out
                         // they are stored in courseIds
                         setThisSemesterCourseIds(courseSelectionList);
                         Log.i(TAG, "courseSelections updating");
