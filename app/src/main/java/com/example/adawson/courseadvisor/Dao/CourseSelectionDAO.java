@@ -31,8 +31,7 @@ public interface CourseSelectionDAO {
 
     //replace an existing course with another course
     @Query("UPDATE course_selection_table SET courseId = :courseId WHERE _id = :id")
-    void replaceCourse(int courseId, int id);
-
+    void replaceCourse(String courseId, int id);
 
     // gets all the courses select
     @Query("SELECT * FROM course_selection_table")

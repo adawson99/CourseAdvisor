@@ -25,9 +25,19 @@ public class CourseRepository {
         return courses;
     }
 
+    //added to get course name by key
+    String getCourseNameByKey(int key) {
+        return courseDAO.getCourseNameByKey(key);
+    }
+
     //added to get course name by id
-    String getCourseNameByKey(int id) {
-        return courseDAO.getCourseNameByKey(id);
+    String getCourseNameById(String id) {
+        return courseDAO.getCourseNameById(id);
+    }
+
+    //get key by id
+    int getCourseKeyById(String id) {
+        return courseDAO.getCourseKeyById(id);
     }
 
    // inserts all the courses in the list into the database

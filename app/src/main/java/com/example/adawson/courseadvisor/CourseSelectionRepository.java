@@ -22,6 +22,11 @@ public class CourseSelectionRepository {
             courseSelections = courseSelectionDAO.getTotalCourses();
         }
 
+        //replace a course with another course
+        public void replaceCourse(String courseId, int key) {
+            courseSelectionDAO.replaceCourse(courseId,key);
+        }
+
         // get courses for this semester
         public LiveData<List<String>> getThisSemesterCourses(int id) {
             return courseSelectionDAO.getThisSemesterCourses(id);
