@@ -67,9 +67,16 @@ public class CourseSelection extends AppCompatActivity {
 
     public void addAllCoursesToDatabase() {
         // creates all courses
-        Course course1 = new Course("CSC 220", "Data Structures", "Computer Science", 5);
+        Course course1 = new Course("CSC 212", "Data Structures", "Computer Science", 5);
         Course course2 = new Course("CSC 250", "Theory of Computer Science", "Computer Science", 4);
         Course course3 = new Course("MUS 951", "Glee CLub", "Art", 1);
+        Course course4 = new Course("CSC 111", "Introduction to CS through Programming", "Computer Science", 5);
+        Course course5 = new Course("ENG 199", "Methods of Literary Study", "English", 4);
+        Course course6 = new Course( "SWG 100", "Intro to SWAG", "Study of Women and Gender", 4);
+        Course course7 = new Course("MTH 153", "Discrete Mathematics", "Computer Science", 4);
+        Course course8 = new Course("CHM 111", "Introductory Chemistry", "Chemistry", 5);
+        Course course9 = new Course("ECO 150", "Introductory Microeconomics", "Economics", 4);
+        Course course10 = new Course("GER 200", "Intermediate German","German", 4);
         Course c1 = new Course("CSC 100", "Test CS Level 1", "Computer Science",
                 4);
         Course c2 = new Course("CSC 200", "Test CS Level 2", "Computer Science",
@@ -87,6 +94,13 @@ public class CourseSelection extends AppCompatActivity {
         courseRepository.insert(c2);
         courseRepository.insert(c3);
         courseRepository.insert(c4);
+        courseRepository.insert(course4);
+        courseRepository.insert(course5);
+        courseRepository.insert(course6);
+        courseRepository.insert(course7);
+        courseRepository.insert(course8);
+        courseRepository.insert(course9);
+        courseRepository.insert(course10);
     }
 
 }
